@@ -1,0 +1,26 @@
+<h3>Product ID - {{currentProduct.productId}}</h3>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{currentProduct.imageUrl}}" class="card-img-top" >
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">Product Name: {{currentProduct.productName}}</h5>
+            <h5 class="card-title">Product Id :{{currentProduct.productId}}</h5>
+            <p class="card-text">Description: {{currentProduct.description}}</p>
+            <p class="card-text">Release Date: {{currentProduct.releaseDate}}</p>
+            <p class="card-text">Price: {{currentProduct.price}}</p>
+            <p class="card-text">Rating: {{currentProduct.rating}}</p>
+            <button class="btn btn-primary mr-2" [disabled]='!currentProduct.isActive' (click)="buyProduct(product)">Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{
+currentProduct | json
+}}
+
+<hr>
+<button type="button" class="btn btn-secondary mr-2" (click)="goBack()">Go Back</button>
+<button type="button" class="btn btn-info" (click)="goToCreateNew()">Create New</button>

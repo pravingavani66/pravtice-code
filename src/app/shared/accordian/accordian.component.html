@@ -1,0 +1,9 @@
+<div class="card" style="width: 250px;">
+  <div class="card-body">
+    <h5 class="card-title cursor-pointer" (click)="isShown=!isShown">{{header}}</h5>
+    <ng-content *ngIf="!isShown" select='.acc-card-body'></ng-content>
+  </div>
+  <div class="card-footer text-muted" *ngIf="!isShown">
+    <ng-content select='.acc-card-footer'></ng-content>
+  </div>
+</div>

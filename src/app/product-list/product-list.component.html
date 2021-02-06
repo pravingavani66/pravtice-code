@@ -1,0 +1,20 @@
+<h1>{{title}}</h1>
+<hr>
+<input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchText">
+Search By : {{searchText}} <br>
+<button class="btn btn-primary mr-3 mt-3" (click)='refreshData()'>Refresh Data</button>
+<button class="btn btn-secondary mt-3 mr-3" (click)="toggleImage()">{{showImages ? 'Hide':'Show'}} Images</button>
+<button class="btn btn-secondary mt-3" (click)="changeName()">Change Name</button>
+<div class="row mt-3" *ngIf="products?.length; else noProducts">
+  <div class="col-md-3" *ngFor="let product of products | searchProduct : searchText;let i= index;trackBy:trackByName">
+    <app-product-details [product]="product" [isShowImage]="showImages"
+      (onProductDelete)="removeProductFromArray($event)" (onStatusChange)="onStatusChangeOfProduct($event)">
+    </app-product-details>
+  </div>
+</div>
+
+<ng-template #noProducts>
+  <p class="text-danger">No Products available</p>
+</ng-template>
+
+<hr>
